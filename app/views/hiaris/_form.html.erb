@@ -1,0 +1,50 @@
+<%= form_for(@hiari, url: hiaris_path, html: {multipart: true}) do |f| %>
+  <% if @hiari.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= @hiari.errors.count %>件のエラーがあります。</h2>
+
+        <ul>
+        <% @hiari.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+        </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.text_field :title, class:'form-control', placeholder: "タイトル" %>
+  </div>
+
+  <div class="field">
+    <%= f.text_area :comment, size: "60x12", class:'form-control', placeholder: "内容" %>
+  </div>
+  <div class="field">
+    <%= f.text_field :address, class: "form-control",placeholder: "目撃住所" %>
+  </div>
+  <div class="actions">
+    <input type="button" value="住所検索" id="button1" class="btn btn-default" >
+  </div>
+  <div id="map-canvas"></div>
+
+  <div class="field">
+    <%= f.text_field :latitude, class: "form-control",placeholder: "緯度" %>
+  </div>
+
+  <div class="field">
+    <%= f.text_field :longitude, class: "form-control",placeholder: "経度" %>
+  </div>
+
+  <div class="field">
+    <%= image_tag @hiari.image if @hiari.image? %>
+    <%= f.file_field :image, class: "filestyle" %>
+    <%= f.hidden_field :image_cache %>
+  </div>
+
+  <hr>
+
+  <div class="actions">
+    <%= f.submit '投稿', class:'btn btn-default' %>
+  </div>
+<% end %>
+
+<%= link_to "投稿一覧画面にもどる", hiaris_path %>

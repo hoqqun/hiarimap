@@ -1,0 +1,31 @@
+<div class="container">
+  <div class="intro-header2">
+    <h2>ヒアリ目撃情報一覧</h2>
+    <hr>
+  </div>
+  <table class="table table-bordered">
+    <tr>
+      <th>タイトル</th>
+      <th>緯度</th>
+      <th>経度</th>
+    </tr>
+    <% @hiaris.each do |hiari| %>
+      <tr>
+        <td><%= hiari.title %></td>
+        <td><%= hiari.latitude %></td>
+        <td><%= hiari.longitude %></td>
+      </tr>
+    <% end %>
+  </table>
+  <div style='width: 800px;'>
+    <div id="map" style='width: 800px; height: 400px;'></div>
+  </div>
+  <script type="text/javascript">
+    handler = Gmaps.build('Google');
+    handler.buildMap({ provider: {}, internal: {id: 'map'}}, function(){
+      markers = handler.addMarkers(<%=raw @hash.to_json %>,{draggable: true});
+      handler.bounds.extendWith(markers);
+      handler.fitMapToBounds();
+    });
+  </script>
+</div>
