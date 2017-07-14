@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
 
-  resources :hiaris, only: [:index, :create, :show, :new]
+  resources :hiaris, only: [:index, :create, :show, :new] do
+    post :getMarkers, on: :collection
+  end
 
   devise_for :users
   get 'top/index'

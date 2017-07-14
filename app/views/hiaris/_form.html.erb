@@ -24,14 +24,15 @@
   <div class="actions">
     <input type="button" value="住所検索" id="button1" class="btn btn-default" >
   </div>
-  <div id="map-canvas"></div>
-
+  <div style='width: 800px;'>
+    <div id="map_new" style='width: 800px; height: 600px;'></div>
+  </div>
   <div class="field">
-    <%= f.text_field :latitude, class: "form-control",placeholder: "緯度" %>
+    <%= f.text_field :latitude, class: "form-control",placeholder: "緯度", readonly: true %>
   </div>
 
   <div class="field">
-    <%= f.text_field :longitude, class: "form-control",placeholder: "経度" %>
+    <%= f.text_field :longitude, class: "form-control",placeholder: "経度", readonly: true  %>
   </div>
 
   <div class="field">
