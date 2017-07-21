@@ -1,14 +1,58 @@
-<a name="about"></a>
 <div class="intro-header">
   <div class="container">
     <div class="row">
       <div class="col-lg-12">
         <div class="intro-message">
-          <h1>ヒアリにヒアリングしよう</h1>
+          <h1>ヒアリマップ</h1>
           <hr class="intro-divider">
-          <h2>みんなと作るヒアリ撲滅マップ</h2>
+          <h2>ヒアリを見つけたらログインして投稿してください。</h2>
         </div>
       </div>
     </div>
   </div>
 </div>
+
+<div class="container">
+  <div class="row">
+    <div class="col-lg-12">
+      <h1>現在の目撃情報</h1>
+      <hr/>
+      <table class="table table-bordered">
+        <tr>
+          <th>日付</th>
+          <th>目撃住所</th>
+        </tr>
+        <% @hiari_chokkin.each do |hiari| %>
+          <tr>
+            <td><%= simple_time hiari.created_at %></td>
+            <td><%= hiari.address %></td>
+          </tr>
+        <% end %>
+      </table>
+    </div>
+  </div>
+</div>
+<div class="container">
+  <div class="row">
+    <div class="col-lg-12">
+      <div id="map" style='width: 600px; height: 400px;'></div>
+    </div>
+  </div>
+</div>
+    <div id="map_script">
+      <script type="text/javascript">
+        handler = Gmaps.build('Google');
+        handler.buildMap({ provider: {}, internal: {id: 'map'}}, function(){
+          markers = handler.addMarkers(<%=raw @hash.to_json %>,{zoom: 16});
+          handler.bounds.extendWith(markers);
+          handler.fitMapToBounds();
+          google.maps.event.addListener(handler.getMap(), "dragend", function(){
+            $.ajax({
+              type: "POST",
+              url: "/hiaris/getMarkers",
+              data: {latitude: handler.getMap().getCenter().lat(), longitude: handler.getMap().getCenter().lng(), zoom: handler.getMap().getZoom()}
+            });
+          });
+        });
+      </script>
+    </div>

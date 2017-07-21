@@ -28,11 +28,10 @@
       handler.bounds.extendWith(markers);
       handler.fitMapToBounds();
       google.maps.event.addListener(handler.getMap(), "dragend", function(){
-        alert(handler.getMap().getCenter().toString());
         $.ajax({
           type: "POST",
           url: "/hiaris/getMarkers",
-          data: {latitude: handler.getMap().getCenter().lat(), longitude: handler.getMap().getCenter().lng()}
+          data: {latitude: handler.getMap().getCenter().lat(), longitude: handler.getMap().getCenter().lng(), zoom: handler.getMap().getZoom()}
         });
       });
     });

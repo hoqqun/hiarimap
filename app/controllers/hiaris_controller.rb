@@ -1,10 +1,10 @@
 class HiarisController < ApplicationController
   def index
     
+    @hiari_last = Hiari.last(3)
+    @hiari_chokkin = Hiari.last()
     #@hiaris = Hiari.all
-    @hiari_last = Hiari.last
-    @hiaris = Hiari.all
-    #@hiaris = Hiari.near([@hiari_last.latitude,@hiari_last.longitude],30)
+    @hiaris = Hiari.near([@hiari_last.latitude,@hiari_last.longitude],1000)
     @hash = Gmaps4rails.build_markers(@hiaris) do | hiari, marker|
       marker.lat hiari.latitude
       marker.lng hiari.longitude
@@ -33,7 +33,8 @@ class HiarisController < ApplicationController
   end
 
   def getMarkers
-    @hiaris = Hiari.near([params[:latitude],params[:longitude]],30)
+    @hiari_chokkin = Hiari.last(3)
+    @hiaris = Hiari.near([params[:latitude],params[:longitude]],1000)
     @hash = Gmaps4rails.build_markers(@hiaris) do | hiari, marker|
       marker.lat hiari.latitude
       marker.lng hiari.longitude

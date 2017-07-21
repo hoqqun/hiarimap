@@ -1,0 +1,41 @@
+def convertZoomToKm(zoom)
+  
+  case zoom
+    when 1
+      return 1000
+    when 2
+      return 1000
+    when 3
+      return 1000
+    when 4
+      return 1000
+    when 5
+      return 500
+    when 6
+      return 200
+    when 7
+      return 100
+    when 8
+      return 50
+    when 9
+      return 20
+    when 10
+      return 10
+    when 11
+      return 5
+    when 12
+      return 2
+    when 13
+      return 1
+    when 14
+      return 0.5
+    when 15
+      return 0.2
+    when 16
+      return 0.2
+    when 17
+      return 0.1
+    when 18
+      return 0.001
+  end
+end
