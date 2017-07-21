@@ -41,12 +41,6 @@ $(document).on 'turbolinks:load', ->
           $('#hiari_longitude').val(ev.latLng.lng())
           return
 
-        google.maps.event.addListener map, 'dragend', ->
-          $.ajax '/hiaris/markerUpdate',
-            type: 'post'
-            data: map.getCenter()
-          return
-
         $('#hiari_latitude').val(results[0].geometry.location.lat())
         $('#hiari_longitude').val(results[0].geometry.location.lng())
       else
