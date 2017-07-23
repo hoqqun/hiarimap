@@ -1,8 +1,8 @@
 class HiarisController < ApplicationController
   def index
     
-    @hiari_last = Hiari.last(3)
-    @hiari_chokkin = Hiari.last()
+    @hiari_last = Hiari.last
+    @hiari_chokkin = Hiari.last(3)
     #@hiaris = Hiari.all
     @hiaris = Hiari.near([@hiari_last.latitude,@hiari_last.longitude],1000)
     @hash = Gmaps4rails.build_markers(@hiaris) do | hiari, marker|
@@ -23,7 +23,7 @@ class HiarisController < ApplicationController
 
   def create
     @hiari = Hiari.new(hiaris_params)
-    binding.pry
+    
     @hiari.user_id = current_user.id
     if @hiari.save
       redirect_to hiaris_path, notice: "ヒアリ目撃情報を投稿しました！"

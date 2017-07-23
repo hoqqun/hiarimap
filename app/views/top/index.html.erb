@@ -20,11 +20,13 @@
       <table class="table table-bordered">
         <tr>
           <th>日付</th>
+          <th>投稿者</th>
           <th>目撃住所</th>
         </tr>
         <% @hiari_chokkin.each do |hiari| %>
           <tr>
             <td><%= simple_time hiari.created_at %></td>
+            <td><%= hiari.user.name %></td>
             <td><%= hiari.address %></td>
           </tr>
         <% end %>
@@ -32,17 +34,17 @@
     </div>
   </div>
 </div>
+
 <div class="container">
-  <div class="row">
-    <div class="col-lg-12">
-      <div id="map" style='width: 600px; height: 400px;'></div>
-    </div>
+  <div style="width: 800px">
+    <div id="map_canvas" style='width: 600px; height: 400px;'></div>
   </div>
 </div>
+
     <div id="map_script">
       <script type="text/javascript">
         handler = Gmaps.build('Google');
-        handler.buildMap({ provider: {}, internal: {id: 'map'}}, function(){
+        handler.buildMap({ provider: {}, internal: {id: 'map_canvas'}}, function(){
           markers = handler.addMarkers(<%=raw @hash.to_json %>,{zoom: 16});
           handler.bounds.extendWith(markers);
           handler.fitMapToBounds();
