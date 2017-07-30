@@ -23,8 +23,9 @@ class HiarisController < ApplicationController
 
   def create
     @hiari = Hiari.new(hiaris_params)
-    
-    @hiari.user_id = current_user.id
+
+    binding.pry
+    #@hiari.user_id = current_user.id
     if @hiari.save
       redirect_to hiaris_path, notice: "ヒアリ目撃情報を投稿しました！"
     else
@@ -52,6 +53,6 @@ class HiarisController < ApplicationController
   private
 
   def hiaris_params
-    params.require(:hiari).permit(:title, :comment, :image, :image_cache, :longitude, :latitude, :address )
+    params.require(:hiari).permit(:title, :comment, :image, :image_cache, :longitude, :latitude, :address, :discover_ari_date )
   end
 end

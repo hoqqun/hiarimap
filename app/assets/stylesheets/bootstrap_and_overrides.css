@@ -7,8 +7,17 @@
   */
 #map_canvas img { 
     max-width: none;
+    max-height: none;
   }
 #map_canvas label { 
+    width: auto; display:inline; 
+  } 
+
+#map_new img { 
+    max-width: none;
+    max-height: none;
+  }
+#map_new label { 
     width: auto; display:inline; 
   } 
  

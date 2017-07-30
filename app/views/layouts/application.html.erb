@@ -27,15 +27,7 @@
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav navbar-right">
-                <% if user_signed_in? %>
-                  <li><%= link_to "ヒアリ情報一覧", hiaris_path %> </li>
-                  <li><%= link_to "ヒアリ目撃！", new_hiari_path %> </li>
-                  <li><%= link_to "マイページ" , edit_user_registration_path %></li>
-                  <li><%= link_to "ログアウト", destroy_user_session_path, method: :delete %> </li>
-                <% else %>
-                  <li><%= link_to "ログイン", new_user_session_path %> </li>
-                  <li><%= link_to "サインアップ", new_user_registration_path %> </li>
-                <% end %>
+                  <li><%= link_to "ヒアリ情報を投稿する", new_hiari_path %> </li>
                 </ul>
             </div>
             <!-- /.navbar-collapse -->

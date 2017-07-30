@@ -44,6 +44,8 @@ GEM
       rack (>= 0.9.0)
     binding_of_caller (0.7.2)
       debug_inspector (>= 0.0.1)
+    bootstrap3-datetimepicker-rails (4.17.47)
+      momentjs-rails (>= 2.8.1)
     builder (3.2.3)
     byebug (9.0.6)
     carrierwave (1.1.0)
@@ -111,6 +113,8 @@ GEM
     mini_magick (4.8.0)
     mini_portile2 (2.2.0)
     minitest (5.10.2)
+    momentjs-rails (2.17.1)
+      railties (>= 3.1)
     multi_json (1.12.1)
     nokogiri (1.8.0)
       mini_portile2 (~> 2.2.0)
@@ -217,6 +221,7 @@ PLATFORMS
 DEPENDENCIES
   better_errors
   binding_of_caller
+  bootstrap3-datetimepicker-rails
   byebug
   carrierwave
   coffee-rails (~> 4.1.0)
@@ -229,6 +234,7 @@ DEPENDENCIES
   jquery-rails
   jquery-turbolinks
   mini_magick
+  momentjs-rails
   pg
   pry-byebug
   pry-rails
