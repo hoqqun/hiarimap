@@ -12,7 +12,7 @@
   <% end %>
 
   <div class="field">
-    <h4>目撃日時を入力してください</h4>
+    <h4>1.目撃日時を入力してください</h4>
     <%= raw sprintf(
       f.datetime_select(
         :discover_ari_date,
@@ -30,20 +30,23 @@
       '年 ', '月 ', '日 ', '時 ') + '分'
     %>
   </div>
+  <br/>
 
   <div class="field">
-    <h4>タイトルを入力してください</h4>
+    <h4>2.タイトルを入力してください</h4>
     <%= f.text_field :title, class:'form-control', placeholder: "タイトル" %>
   </div>
 
-
+  <br/>
   <div class="field">
-    <h4>コメントや詳細情報を入力してください</h4>
+    <h4>3.コメントや詳細情報を入力してください</h4>
     <%= f.text_area :comment, size: "60x3", class:'form-control', placeholder: "内容" %>
   </div>
 
+  <br/>
+
   <div class="field">
-    <h4>目撃した住所(駅名、公園名など可能)を指定し、住所検索ボタンを押してください</h4>
+    <h4>4.目撃した住所(駅名、公園名など可能)を指定し、住所検索ボタンを押してください</h4>
     <h4>その後、マーカーをドラッグして位置を微調整できます</h4>
 
     <%= f.text_field :address, class: "form-control",placeholder: "目撃住所" %>
@@ -51,9 +54,9 @@
   <div class="actions">
     <input type="button" value="住所検索" id="button1" class="btn btn-default" >
   </div>
-  <div class="col-xs-offset-2 col-xs-10 col-lg-offset-4 col-lg-6">
+
     <div id="map_new" style='width: 600px; height: 500px;'></div>
-  </div>
+
   <div class="field">
     <%= f.text_field :latitude, class: "form-control",placeholder: "緯度", readonly: true %>
   </div>
@@ -62,19 +65,27 @@
     <%= f.text_field :longitude, class: "form-control",placeholder: "経度", readonly: true  %>
   </div>
 
-
+  <br/>
   
   <div class="field">
-    <h4>画像があればファイルを選択してください。</h4>
+    <h4>5.画像があればファイルを選択してください。</h4>
     <%= image_tag @hiari.image if @hiari.image? %>
     <%= f.file_field :image, class: "form-control bootstrap-date" %>
     <%= f.hidden_field :image_cache %>
   </div>
 
-  <hr>
+  <br/>
 
+  <h4>6.ロボットではないことを確認します。</h4>
+  <%= recaptcha_tags %>
+
+  <hr/>
+
+  <h4>7.よろしければ、下記ボタンをクリックしてください。</h4>
   <div class="actions">
-    <%= f.submit '投稿', class:'btn btn-default', data: { confirm: "本当によろしいですか？"} %>
+    <%= f.submit '投稿する。', class:'btn btn-primary', data: { confirm: "本当によろしいですか？"} %>
   </div>
+  <br/>
+
 <% end %>
 

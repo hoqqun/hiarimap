@@ -4,7 +4,6 @@ class Hiari < ActiveRecord::Base
   validates :latitude, presence: {message: " 住所を検索し、位置を指定してください。"}
   validates :title, presence: true
   validate :check_date #未来日付チェック
-  
 
   mount_uploader :image, ImageUploader #deviseの設定配下に追記
   
