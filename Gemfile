@@ -59,3 +59,4 @@ gem 'font-awesome-rails'
 gem 'momentjs-rails'
 gem 'bootstrap3-datetimepicker-rails'
 gem 'rails_12factor', group: :production
+gem 'seed_dump'
