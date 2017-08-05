@@ -22,6 +22,11 @@
 //= require_tree .
 var data = {'data-date-format': 'YYYY-MM-DD hh:mm:ss' };
 $(function(){
-  $('.datepicker').attr(data);
-  $('.datepicker').datetimepicker();
+  $('.datepicker').datetimepicker({
+    format : "YYYY/MM/DD",
+    icons: {
+      previous: "fa fa-caret-square-o-left",
+      next: "fa fa-caret-square-o-right"
+    }
+  });
 });

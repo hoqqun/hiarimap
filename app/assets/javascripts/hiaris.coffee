@@ -18,7 +18,6 @@
   #alert("ボタンをしましたね。")
 $(document).on 'turbolinks:load', -> 
   $('#button1').on 'click', ->
-    alert $('#hiari_address').val()
     latlng = new (google.maps.LatLng)(-34.397, 150.644)
     myOptions = 
       zoom: 16
@@ -44,7 +43,7 @@ $(document).on 'turbolinks:load', ->
         $('#hiari_latitude').val(results[0].geometry.location.lat())
         $('#hiari_longitude').val(results[0].geometry.location.lng())
       else
-        alert 'Geocode was not successful for the following reason: ' + status
+        alert '場所が見つかりませんでした。目撃住所を指定してください。: ' + status
 
   handler = Gmaps.build('Google')
   handler.buildMap {
@@ -57,4 +56,7 @@ $(document).on 'turbolinks:load', ->
      } ], draggable: true)
     handler.bounds.extendWith markers
     handler.fitMapToBounds()
+    handler.getMap().setZoom(12)
     return
+
+  

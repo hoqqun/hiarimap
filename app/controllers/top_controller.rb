@@ -1,7 +1,7 @@
 class TopController < ApplicationController
   def index
     @hiari_last = Hiari.last
-    @hiari_chokkin = Hiari.last(3)
+    @hiari_chokkin = Hiari.order(created_at: :desc).first(3)
     #@hiaris = Hiari.all
     @hiaris = Hiari.near([@hiari_last.latitude,@hiari_last.longitude],1000)
     @hash = Gmaps4rails.build_markers(@hiaris) do | hiari, marker|

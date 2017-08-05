@@ -1,10 +1,9 @@
 Rails.application.routes.draw do
 
-  resources :hiaris, only: [:index, :create, :show, :new] do
+  resources :hiaris, only: [:create, :new] do
     post :getMarkers, on: :collection
   end
 
-  devise_for :users
   get 'top/index'
 
   # The priority is based upon order of creation: first created -> highest priority.

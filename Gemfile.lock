@@ -38,9 +38,9 @@ GEM
       tzinfo (~> 1.1)
     arel (6.0.4)
     bcrypt (3.1.11)
-    better_errors (2.1.1)
+    better_errors (2.3.0)
       coderay (>= 1.0.0)
-      erubis (>= 2.6.6)
+      erubi (>= 1.0.0)
       rack (>= 0.9.0)
     binding_of_caller (0.7.2)
       debug_inspector (>= 0.0.1)
@@ -73,6 +73,7 @@ GEM
     dotenv-rails (2.2.1)
       dotenv (= 2.2.1)
       railties (>= 3.2, < 5.2)
+    erubi (1.6.1)
     erubis (2.7.0)
     execjs (2.7.0)
     ffi (1.9.18)
@@ -112,14 +113,14 @@ GEM
     mime-types-data (3.2016.0521)
     mini_magick (4.8.0)
     mini_portile2 (2.2.0)
-    minitest (5.10.2)
+    minitest (5.10.3)
     momentjs-rails (2.17.1)
       railties (>= 3.1)
     multi_json (1.12.1)
     nokogiri (1.8.0)
       mini_portile2 (~> 2.2.0)
     orm_adapter (0.5.0)
-    pg (0.21.0)
+    pg (0.20.0)
     pry (0.10.4)
       coderay (~> 1.1.0)
       method_source (~> 0.8.1)
@@ -194,7 +195,7 @@ GEM
       ref
     thor (0.19.4)
     thread_safe (0.3.6)
-    tilt (2.0.7)
+    tilt (2.0.8)
     turbolinks (5.0.1)
       turbolinks-source (~> 5)
     turbolinks-source (5.0.3)
@@ -235,7 +236,7 @@ DEPENDENCIES
   jquery-turbolinks
   mini_magick
   momentjs-rails
-  pg
+  pg (= 0.20.0)
   pry-byebug
   pry-rails
   rails (= 4.2.3)

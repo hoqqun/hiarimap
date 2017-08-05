@@ -21,3 +21,7 @@
     width: auto; display:inline; 
   } 
  
+.bootstrap-date {
+  display: inline-block;
+  width: auto;
+}

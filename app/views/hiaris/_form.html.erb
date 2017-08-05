@@ -13,14 +13,24 @@
 
   <h4>目撃日時を入力してください</h4>
   <div class="field">
-    <div class='input-group date datepicker'>
-  <%= f.text_field :discover_ari_date, class: 'form-control' %>
-  <span class="input-group-addon">
-    <span><%= fa_icon :calendar %></span>
-  </span>
-</div>
+    <%= raw sprintf(
+      f.datetime_select(
+        :discover_ari_date,
+        {
+          start_year:     Time.zone.now.prev_year.year,
+          end_year:       Time.zone.now.next_year.year,
+          default:        Time.zone.now,
+          use_two_digit_numbers: true,
+          date_separator: '%s',
+          datetime_separator: '%s',
+          time_separator: '%s'
+        },
+        { class: 'form-control bootstrap-date' }
+      ),
+      '年 ', '月 ', '日 ', '時 ') + '分'
+    %>
   </div>
-  <h4>タイトルを入力してください</h4>
+    <h4>タイトルを入力してください</h4>
   <div class="field">
     <%= f.text_field :title, class:'form-control', placeholder: "タイトル" %>
   </div>
@@ -52,15 +62,14 @@
   <h4>画像があればファイルを選択してください。</h4>
   <div class="field">
     <%= image_tag @hiari.image if @hiari.image? %>
-    <%= f.file_field :image, class: "form-control" %>
+    <%= f.file_field :image, class: "form-control bootstrap-date" %>
     <%= f.hidden_field :image_cache %>
   </div>
 
   <hr>
 
   <div class="actions">
-    <%= f.submit '投稿', class:'btn btn-default' %>
+    <%= f.submit '投稿', class:'btn btn-default', data: { confirm: "本当によろしいですか？"} %>
   </div>
 <% end %>
 
-<%= link_to "投稿一覧画面にもどる", hiaris_path %>

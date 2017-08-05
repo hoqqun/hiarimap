@@ -2,7 +2,7 @@ ja:
   activerecord:
     models:
       user: "ユーザー"
-      datum: "リコンサイルデータ"
+      hiari: "ヒアリ情報"
     attributes:
       user:
         title: "タイトル"
@@ -14,3 +14,9 @@ ja:
         password: "パスワード"
         password_confirmation: "確認用パスワード"
         remember_me: "ログインを記憶"
+      hiari:
+        discover_ari_date: "目撃日時"
+        title: "タイトル"
+        comment: "コメント"
+        longitude: "経度"
+        latitude: "緯度"
