@@ -70,7 +70,7 @@
   <div class="field">
     <h4>5.画像があればファイルを選択してください。</h4>
     <%= image_tag @hiari.image if @hiari.image? %>
-    <%= f.file_field :image, class: "form-control bootstrap-date" %>
+    <%= f.file_field :image, class: "filestyle" , "data-buttonText":"ファイルを選択",  "data-icon":"false"%>
     <%= f.hidden_field :image_cache %>
   </div>
 
@@ -79,7 +79,7 @@
   <h4>6.ロボットではないことを確認します。</h4>
   <%= recaptcha_tags %>
 
-  <hr/>
+  <br/>
 
   <h4>7.よろしければ、下記ボタンをクリックしてください。</h4>
   <div class="actions">
