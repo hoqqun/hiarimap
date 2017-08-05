@@ -1,3 +1,3 @@
 <h2><%= hiari.title %></h2>
 <p><%= hiari.comment %></p>
-<%= image_tag(hiari.image, size: '100x100') if hiari.image.present? %>
+<%= image_tag(hiari.image.thumb, size: '100x100') if hiari.image.present? %>
