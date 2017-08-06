@@ -1,7 +1,7 @@
 <div class="intro-header">
   <div class="container">
     <div class="row">
-      <div class="col-lg-12">
+      <div class="col-xs-12">
         <div class="intro-message">
           <h1>ヒアリマップ(β)</h1>
           <hr class="intro-divider">
@@ -13,45 +13,48 @@
   </div>
 </div>
 <small>出典:https://academist-cf.com</small>
-<div class="row">
-  <div class="col-xs-12">
-    <h1>現在の目撃情報</h1>
-    <hr/>
-    <table class="table table-bordered">
-      <tr class="active">
-        <th>投稿日付</th>
-        <th>目撃住所</th>
-      </tr>
-      <% @hiari_chokkin.each do |hiari| %>
-        <tr>
-          <td><%= simple_time hiari.created_at %></td>
-          <td><%= hiari.address %></td>
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12">
+      <h1>現在の目撃情報</h1>
+      <hr/>
+      <table class="table table-bordered">
+        <tr class="active">
+          <th>投稿日付</th>
+          <th>目撃住所</th>
         </tr>
-      <% end %>
-    </table>
-  </div>
-</div>
-
-<div class="row">
-  <div class="col-xs-12">
-    <div id="map_canvas" style='width: 100%; height: 600px;'></div>
-  </div>
-</div>
-
-    <div id="map_script">
-      <script type="text/javascript">
-        handler = Gmaps.build('Google');
-        handler.buildMap({ provider: {}, internal: {id: 'map_canvas'}}, function(){
-          markers = handler.addMarkers(<%=raw @hash.to_json %>,{zoom: 16});
-          handler.bounds.extendWith(markers);
-          handler.fitMapToBounds();
-          google.maps.event.addListener(handler.getMap(), "dragend", function(){
-            $.ajax({
-              type: "POST",
-              url: "/hiaris/getMarkers",
-              data: {latitude: handler.getMap().getCenter().lat(), longitude: handler.getMap().getCenter().lng(), zoom: handler.getMap().getZoom()}
-            });
-          });
-        });
-      </script>
+        <% @hiari_chokkin.each do |hiari| %>
+          <tr>
+            <td><%= simple_time hiari.created_at %></td>
+            <td><%= hiari.address %></td>
+          </tr>
+        <% end %>
+      </table>
     </div>
+  </div>
+</div>
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12">
+      <div id="map_canvas" style='width: 100%; height: 600px;'></div>
+    </div>
+  </div>
+</div>
+
+<div id="map_script">
+  <script type="text/javascript">
+   handler = Gmaps.build('Google');
+   handler.buildMap({ provider: {}, internal: {id: 'map_canvas'}}, function(){
+      markers = handler.addMarkers(<%=raw @hash.to_json %>,{zoom: 16});
+      handler.bounds.extendWith(markers);
+      handler.fitMapToBounds();
+      google.maps.event.addListener(handler.getMap(), "dragend", function(){
+        $.ajax({
+          type: "POST",
+          url: "/hiaris/getMarkers",
+          data: {latitude: handler.getMap().getCenter().lat(), longitude: handler.getMap().getCenter().lng(), zoom: handler.getMap().getZoom()}
+        });
+      });
+    });
+  </script>
+</div>
