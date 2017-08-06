@@ -15,6 +15,12 @@ class HiarisController < ApplicationController
         "height" => 50 })
     end
   end
+
+  def news
+  end
+
+  def about
+  end
   
   def new
     @hiari = Hiari.new

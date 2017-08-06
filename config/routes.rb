@@ -2,6 +2,8 @@ Rails.application.routes.draw do
 
   resources :hiaris, only: [:create, :new] do
     post :getMarkers, on: :collection
+    get :news, on: :collection
+    get :about, on: :collection
   end
 
   get 'top/index'

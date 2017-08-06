@@ -1,3 +1,5 @@
-<h2><%= hiari.title %></h2>
+<h4>【<%= hiari.title %>】</h4>
+<p>目撃日時：<%= simple_time hiari.discover_ari_date %></p>
 <p><%= hiari.comment %></p>
-<%= image_tag(hiari.image.thumb, size: '100x100') if hiari.image.present? %>
+<p><%= hiari.address %></p>
+<%= image_tag(hiari.image, size: '100x100') if hiari.image.present? %>
