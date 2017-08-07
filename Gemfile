@@ -67,3 +67,4 @@ gem 'bootstrap3-datetimepicker-rails'
 gem 'rails_12factor', group: :production
 gem 'seed_dump', group: :development
 gem "recaptcha", require: "recaptcha/rails"
+gem 'google-analytics-rails'

@@ -2,7 +2,6 @@
   <% if @hiari.errors.any? %>
     <div id="error_explanation">
       <h2><%= @hiari.errors.count %>件のエラーがあります。</h2>
-
         <ul>
         <% @hiari.errors.full_messages.each do |msg| %>
           <li><%= msg %></li>
