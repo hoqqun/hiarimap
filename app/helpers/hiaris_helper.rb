@@ -15,4 +15,23 @@ module HiarisHelper
         return "高"
     end
   end
+
+  def default_meta_tags
+    {
+      title: "ヒアリマップ",
+      description: "ヒアリの目撃情報をグーグルマップにプロットできます。随時UPDATE中。",
+      keywords: "ヒアリ,目撃,情報,マップ",
+      icon: image_url("hiari.png"),
+      charset: "UTF-8",
+      og: {
+        title: "ヒアリマップ",
+        type: "website",
+        url: request.original_url,
+        image: image_url("OGPhiarimap.png"),
+        site_name: "ヒアリマップ",
+        description: "ヒアリの目撃情報をグーグルマップにプロットできます。随時UPDATE中。",
+        locale: "ja_JP"
+      }
+    }
+  end
 end
