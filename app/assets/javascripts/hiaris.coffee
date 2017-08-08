@@ -15,7 +15,6 @@
   #     });
   #   }
   # });
-  #alert("ボタンをしましたね。")
 $(document).on 'turbolinks:load', -> 
   $('#button1').on 'click', ->
     latlng = new (google.maps.LatLng)(-34.397, 150.644)
@@ -34,6 +33,7 @@ $(document).on 'turbolinks:load', ->
           map: map
           draggable: true)
 
+        # ドラッグエンド時に緯度経度を再取得
         google.maps.event.addListener marker, 'dragend', (ev) ->
           # イベントの引数evの、プロパティ.latLngが緯度経度。
           $('#hiari_latitude').val(ev.latLng.lat())
@@ -43,20 +43,4 @@ $(document).on 'turbolinks:load', ->
         $('#hiari_latitude').val(results[0].geometry.location.lat())
         $('#hiari_longitude').val(results[0].geometry.location.lng())
       else
-        alert '場所が見つかりませんでした。目撃住所を指定してください。: ' + status
-
-  handler = Gmaps.build('Google')
-  handler.buildMap {
-     provider: {}
-     internal: id: 'map_new'
-  }, ->
-    markers = handler.addMarkers([ {
-       'lat': 35.5945729
-       'lng': 139.7527161
-     } ], draggable: true)
-    handler.bounds.extendWith markers
-    handler.fitMapToBounds()
-    handler.getMap().setZoom(12)
-    return
-
-  
+        alert '場所が見つかりませんでした。目撃住所を指定してください。'

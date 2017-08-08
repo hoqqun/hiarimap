@@ -45,7 +45,14 @@
   <br/>
 
   <div class="field">
-    <h4>4.目撃した住所(駅名、公園名など可能)を指定し、住所検索ボタンを押してください</h4>
+    <h4>4.情報信頼度を選択してください</h4>
+    <%= f.select :reliability, [["高 - ヒアリ確実", 3], ["中 - ヒアリっぽいけど未確認", 2], ["低 - どっかの情報サイトで見た", 1]], {}, {class:'form-control'} %>
+  </div>
+
+  <br/>
+
+  <div class="field">
+    <h4>5.目撃した住所(駅名、公園名など可能)を指定し、住所検索ボタンを押してください</h4>
     <h4>その後、マーカーをドラッグして位置を微調整できます</h4>
 
     <%= f.text_field :address, class: "form-control",placeholder: "目撃住所" %>
@@ -54,7 +61,7 @@
     <input type="button" value="住所検索" id="button1" class="btn btn-default" >
   </div>
 
-    <div id="map_new" style='width: 600px; height: 500px;'></div>
+    <div id="map_new" style='width: 600px; height: 500px;'>住所検索を行うとマップが表示されます。。</div>
 
   <div class="field">
     <%= f.text_field :latitude, class: "form-control",placeholder: "緯度", readonly: true %>
@@ -67,7 +74,7 @@
   <br/>
   
   <div class="field">
-    <h4>5.画像があればファイルを選択してください。</h4>
+    <h4>6.画像があればファイルを選択してください。</h4>
     <%= image_tag @hiari.image if @hiari.image? %>
     <%= f.file_field :image, class: "filestyle" , "data-buttonText":"ファイルを選択",  "data-icon":"false"%>
     <%= f.hidden_field :image_cache %>
@@ -75,12 +82,12 @@
 
   <br/>
 
-  <h4>6.ロボットではないことを確認します。</h4>
+  <h4>7.ロボットではないことを確認します。</h4>
   <%= recaptcha_tags %>
 
   <br/>
 
-  <h4>7.よろしければ、下記ボタンをクリックしてください。</h4>
+  <h4>8.よろしければ、下記ボタンをクリックしてください。</h4>
   <div class="actions">
     <%= f.submit '投稿する。', class:'btn btn-primary', data: { confirm: "本当によろしいですか？"} %>
   </div>

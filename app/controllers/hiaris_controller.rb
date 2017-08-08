@@ -1,20 +1,4 @@
 class HiarisController < ApplicationController
-  def index
-    
-    @hiari_last = Hiari.last
-    @hiari_chokkin = Hiari.order(created_at: :asc).last(3)
-    #@hiaris = Hiari.all
-    @hiaris = Hiari.near([@hiari_last.latitude,@hiari_last.longitude],1000)
-    @hash = Gmaps4rails.build_markers(@hiaris) do | hiari, marker|
-      marker.lat hiari.latitude
-      marker.lng hiari.longitude
-      marker.infowindow render_to_string(partial: "hiaris/infoWindow", locals: {hiari: hiari})
-      marker.picture({
-        "url" => view_context.image_path('hiari.png'),
-        "width" => 50,
-        "height" => 50 })
-    end
-  end
 
   def news
   end
@@ -39,17 +23,16 @@ class HiarisController < ApplicationController
   end
 
   def getMarkers
-    @hiari_chokkin = Hiari.last(3)
     @hiaris = Hiari.near([params[:latitude],params[:longitude]],1000)
-    @hash = Gmaps4rails.build_markers(@hiaris) do | hiari, marker|
-      marker.lat hiari.latitude
-      marker.lng hiari.longitude
-      marker.infowindow render_to_string(partial: "hiaris/infoWindow", locals: {hiari: hiari})
+    #@hash = Gmaps4rails.build_markers(@hiaris) do | hiari, marker|
+    #  marker.lat hiari.latitude
+    #  marker.lng hiari.longitude
+    #  marker.infowindow render_to_string(partial: "hiaris/infoWindow", locals: {hiari: hiari})
       #marker.picture({
-      #  "url" => view_context.image_path('hiari.png'),
+      #  "url" => image_path('hiari.png'),
       #  "width" => 50,
       #  "height" => 50 })
-    end
+    #end
     respond_to do |format|
       format.js {render :markers}
     end
@@ -58,6 +41,6 @@ class HiarisController < ApplicationController
   private
 
   def hiaris_params
-    params.require(:hiari).permit(:title, :comment, :image, :image_cache, :longitude, :latitude, :address, :discover_ari_date )
+    params.require(:hiari).permit(:title, :comment, :image, :image_cache, :longitude, :latitude, :address, :discover_ari_date, :reliability )
   end
 end
