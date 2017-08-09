@@ -11,6 +11,9 @@ class HiarisController < ApplicationController
     @hash = [{lat: 35.5945729, lng: 139.7527161}]
   end
 
+  def detect
+  end
+
   def create
     @hiari = Hiari.new(hiaris_params)
 

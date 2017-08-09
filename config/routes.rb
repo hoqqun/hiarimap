@@ -4,6 +4,7 @@ Rails.application.routes.draw do
     post :getMarkers, on: :collection
     get :news, on: :collection
     get :about, on: :collection
+    get :detect, on: :collection
   end
 
   get 'top/index'
