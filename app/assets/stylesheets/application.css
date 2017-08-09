@@ -16,6 +16,35 @@
  *= require_self
  */
 
- .opa {
-   opacity: 0.5;
- }
+.opa {
+  opacity: 0.5;
+}
+
+.sns{
+	text-align: left;
+}
+ 
+.sns > li {
+	display: inline-block;
+	vertical-align: top;
+	margin: 0 7px;
+}
+ 
+.sns > li:first-child {
+	margin-left: 0;
+}
+ 
+.sns > li:last-child {
+	margin-right: 0;
+}
+ 
+.sns iframe {
+	margin: 0 !important;
+}
+ 
+@media screen and (max-width: 780px){
+	.sns > li{
+		width: 80px !important;
+		margin: 0 7px 10px 0;
+	}
+}
