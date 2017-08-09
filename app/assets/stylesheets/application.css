@@ -17,11 +17,11 @@
  */
 
 .opa {
-  opacity: 0.5;
-}
+   opacity: 0.9;
+ }
 
 .sns{
-	text-align: left;
+	text-align: center;
 }
  
 .sns > li {
