@@ -18,13 +18,13 @@ module HiarisHelper
 
   def default_meta_tags
     {
-      title: "ヒアリマップ",
+      title: "ヒアリマップ - 目撃情報を日本地図にプロットしてみた",
       description: "あなたのご近所にもしかしたらヒアリがいるかもしれない。被害に会わないために、みんなで目撃情報をシェアしましょう！。ヒアリの目撃情報をグーグルマップにプロットできるサービスです。随時UPDATE中。",
       keywords: "ヒアリ,目撃,情報,マップ",
       icon: image_url("hiari.png"),
       charset: "UTF-8",
       og: {
-        title: "ヒアリマップ",
+        title: "ヒアリマップ - 目撃情報を日本地図にプロットしてみた",
         type: "website",
         url: request.original_url,
         image: image_url("OGPhiarimap.png"),
