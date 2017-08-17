@@ -30,7 +30,7 @@
           <th>目撃住所</th>
         </tr>
         <% @hiari_chokkin.each do |hiari| %>
-          <tr>
+          <tr <%= raw 'class="bg-warning"' if new? hiari.created_at %>>
             <td><%= simple_time hiari.created_at %></td>
             <td><%= simple_time hiari.discover_ari_date %></td>
             <td><%= convert2Reliability hiari.reliability %></td>
