@@ -19,9 +19,9 @@ class HiarisController < ApplicationController
 
     @hiari.ipaddress = request.remote_ip
     if verify_recaptcha(model: @hiari, message: "reCAPTCHAエラーです。チェックボックスにチェックを入れてください。") && @hiari.save
-      redirect_to root_path, notice: "投稿ありがとうございました！"
+      redirect_to root_path, success: "投稿ありがとうございました！"
     else
-      render 'new'
+      render 'new', warning: "投稿に失敗しました。"
     end
   end
 

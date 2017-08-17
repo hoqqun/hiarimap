@@ -44,3 +44,11 @@ $(document).on 'turbolinks:load', ->
         $('#hiari_longitude').val(results[0].geometry.location.lng())
       else
         alert '場所が見つかりませんでした。目撃住所を指定してください。'
+
+  if $('.alert').length
+    setTimeout (->
+      $(".alert").animate({height: "toggle", opacity: "toggle"},"slow")
+      return
+    ), 3000
+    
+    

@@ -39,7 +39,9 @@
         </div>
         <!-- /.container -->
     </nav>
-
+<% flash.each do |key, value| %>
+    <%= content_tag :div, value, class: "alert alert-#{key}", style: 'padding-top: 50px;' %>
+<% end %>
 <%= yield %>
 <div class="container">
     <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
