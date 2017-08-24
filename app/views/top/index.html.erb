@@ -50,12 +50,7 @@
 </div>
 
 <div id="map_script">
-  <script type="text/javascript">
-   handler = Gmaps.build('Google');
-   handler.buildMap({ provider: {}, internal: {id: 'map_canvas'}}, function(){
-      markers = handler.addMarkers(<%=raw @hash.to_json %>,{zoom: 16});
-      handler.bounds.extendWith(markers);
-      handler.fitMapToBounds();
-    });
+  <script>
+    var markerList = <%= raw @hash.to_json %>
   </script>
 </div>
